@@ -6,7 +6,7 @@ HtmlEditor Blazor Components are distributed as the HtmlEditor.Blazor nuget pack
 
 You can add them to your project in one of the following ways
 
-    Install the package from command line by running dotnet add package HtmlEditor.Blazor
+   ##Install the package from command line by running dotnet add package HtmlEditor.Blazor
     Add the project from the Visual Nuget Package Manager.
 
 2. Import the namespace
@@ -23,11 +23,12 @@ Open the _Host.cshtml file (server-side Blazor) or wwwroot/index.html (client-si
 Use any HtmlEditor Blazor component by typing its tag name in a Blazor page e.g. <HtmlEditorButton Text="Hi"></HtmlEditorButton>
 Setting a property
 
-
+<code>
 <HtmlEditorComponent UploadUrl="upload/image" Change="@OnChange" Paste="@OnPaste" Execute="@OnExecute" ></HtmlEditorComponent>
 
 
 @code {
+
     void OnPaste(HtmlEditorPasteEventArgs args)
     {
      ////
@@ -43,4 +44,4 @@ Setting a property
        ////
     }
 }
-
+</code>
