@@ -1,0 +1,210 @@
+$html-editor-border: $html-editor-input-border !default;
+$html-editor-border-radius: $border-radius !default;
+$html-editor-toolbar-background-color: $white !default;
+$html-editor-toolbar-item-margin: 0.5rem !default;
+$html-editor-button-padding: 0.625rem !default;
+$html-editor-button-background-color: $white !default;
+$html-editor-button-color: $body-color !default;
+$html-editor-button-disabled-color: $html-editor-input-disabled-color !default;
+$html-editor-button-selected-background-color: $default-link !default;
+$html-editor-button-selected-color: $white !default;
+$html-editor-separator-background-color: #dadfe2 !default;
+$html-editor-content-background-color: $html-editor-input-background-color !default;
+$html-editor-dropdown-item-font-size: $html-editor-input-font-size !default;
+$html-editor-dropdown-horizontal-padding: 0.625rem !default;
+$html-editor-dropdown-item-padding: 0.25rem $html-editor-dropdown-horizontal-padding !default;
+$html-editor-dropdown-item-selected-background-color: $default-link !default;
+$html-editor-dropdown-item-hover-color: $white !default;
+$html-editor-dropdown-item-selected-color: $html-editor-dropdown-item-hover-color !default;
+$html-editor-dropdown-item-hover-background-color: #59a6cd !default;
+$html-editor-dropdown-open-border: $html-editor-input-border !default;
+$html-editor-dropdown-panel-border: $html-editor-dropdown-open-border !default;
+$html-editor-dropdown-open-background-color: $html-editor-input-background-color !default;
+.html-editor {
+  display: flex;
+  flex-direction: column;
+  border-radius: $border-radius;
+  border: $html-editor-border;
+}
+
+.html-editor-content {
+  flex: 1;
+  overflow: auto;
+  padding: 0.5rem;
+  outline: none;
+  background-color: $html-editor-content-background-color;
+}
+
+.html-editor-toolbar {
+  border-bottom: $html-editor-border;
+  display: flex;
+  line-height: 1rem;
+  flex-wrap: wrap;
+  background-color: $html-editor-toolbar-background-color;
+
+  .hei {
+    font-size: 1rem;
+  }
+
+/*  > * {
+    margin: $html-editor-toolbar-item-margin;
+  }*/
+}
+
+.html-editor-colorpicker-toolbar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: $html-editor-button-background-color;
+    padding: $html-editor-button-padding;
+
+    .html-editor-colorpicker-trigger {
+        color: inherit;
+        background-color: $html-editor-button-background-color;
+    }
+
+    .html-editor-colorpicker-value {
+        display: none;
+    }
+
+    .html-editor-colorpicker {
+        border: none;
+        box-shadow: none;
+        padding: 0;
+        height: auto;
+
+        &:hover {
+            border: none;
+            box-shadow: none;
+        }
+    }
+}
+
+.html-editor-color {
+  border: none;
+  display: flex;
+  flex-direction: column;
+  background: inherit;
+  color: inherit;
+  appearance: none;
+  padding: 0;
+  position: relative;
+
+  &:disabled {
+    color: $html-editor-input-disabled-color;
+  }
+}
+
+.html-editor-color-value {
+  position: absolute;
+  bottom: -4px;
+  height: 4px;
+  width: 100%;
+}
+
+.html-editor-button-toolbar {
+  color: $html-editor-button-color;
+  appearance: none;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: $html-editor-button-background-color;
+  padding: $html-editor-button-padding;
+
+  &.selected {
+    background-color: $html-editor-button-selected-background-color;
+    color: $html-editor-button-selected-color;
+    border-radius: $html-editor-border-radius;
+  }
+
+  &:disabled {
+    color: $html-editor-button-disabled-color;
+  }
+}
+
+.html-editor-dropdown {
+  display: inline-flex;
+  padding: $html-editor-button-padding;
+  align-items: center;
+  cursor: pointer;
+
+  &.disabled {
+    color: $html-editor-input-disabled-color;
+    cursor: default;
+  }
+}
+%dropdown-panel {
+    position: absolute;
+    transform: translateY(-$html-editor-input-border-radius);
+    background-color: $html-editor-dropdown-open-background-color;
+    border-radius: $html-editor-input-border-radius;
+    border: $html-editor-dropdown-panel-border;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+}
+.html-editor-dropdown-items {
+  @extend %dropdown-panel;
+}
+@mixin editor-dropdown-item-hover($radius: $border-radius) {
+    &:hover {
+        background-color: $html-editor-dropdown-item-hover-background-color;
+        color: $html-editor-dropdown-item-hover-color;
+
+        @if $radius {
+            border-radius: $radius;
+        }
+    }
+}
+.html-editor-dropdown-item {
+    cursor: default;
+    font-size: $html-editor-dropdown-item-font-size;
+    padding: $html-editor-dropdown-item-padding;
+    white-space: nowrap;
+
+    @include editor-dropdown-item-hover(0);
+
+    &.selected {
+        background-color: $html-editor-dropdown-item-selected-background-color;
+        color: $html-editor-dropdown-item-selected-color;
+    }
+}
+
+.html-editor-dropdown-trigger {
+  border: none;
+  appearance: none;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  color: inherit;
+  background-color: inherit;
+
+  .hei {
+    &:before {
+      content: 'arrow_drop_down';
+    }
+  }
+}
+
+.html-editor-dropdown-items {
+  display: none;
+}
+
+.html-editor-dialog-item {
+  margin-bottom: 1rem;
+
+  label {
+    &:first-child {
+      display: block;
+    }
+  }
+}
+
+.html-editor-dialog-buttons {
+  text-align: right;
+}
+
+.html-editor-separator {
+  width: 1px;
+  background-color: $html-editor-separator-background-color;
+}

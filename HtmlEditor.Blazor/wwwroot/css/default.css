@@ -1,0 +1,1219 @@
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: local("Material Icons"), local("MaterialIcons-Regular"), url("../fonts/MaterialIcons-Regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-weight: 200;
+  font-style: normal;
+  font-stretch: normal;
+  src: local("SourceSansPro-ExtraLight"), local("Source Sans Pro"), url("../fonts/SourceSansPro-ExtraLight.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-weight: 300;
+  font-style: normal;
+  font-stretch: normal;
+  src: local("SourceSansPro-Light"), local("Source Sans Pro"), url("../fonts/SourceSansPro-Light.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal;
+  src: local("SourceSansPro-Regular"), local("Source Sans Pro"), url("../fonts/SourceSansPro-Regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  src: local("SourceSansPro-Semibold"), local("Source Sans Pro Semibold"), url("../fonts/SourceSansPro-Semibold.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-weight: 700;
+  font-style: normal;
+  font-stretch: normal;
+  src: local("SourceSansPro-Bold"), local("Source Sans Pro Bold"), url("../fonts/SourceSansPro-Bold.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-weight: 900;
+  font-style: normal;
+  font-stretch: normal;
+  src: local("SourceSansPro-Black"), local("Source Sans Pro Black"), url("../fonts/SourceSansPro-Black.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-weight: 200;
+  font-style: italic;
+  font-stretch: normal;
+  src: local("SourceSansPro-ExtraLightIt"), local("Source Sans Pro"), url("../fonts/SourceSansPro-ExtraLightIt.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-weight: 300;
+  font-style: italic;
+  font-stretch: normal;
+  src: local("SourceSansPro-LightIt"), local("Source Sans Pro"), url("../fonts/SourceSansPro-LightIt.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-weight: 400;
+  font-style: italic;
+  font-stretch: normal;
+  src: local("SourceSansPro-It"), local("Source Sans Pro"), url("../fonts/SourceSansPro-It.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-weight: 600;
+  font-style: italic;
+  font-stretch: normal;
+  src: local("SourceSansPro-SemiboldIt"), local("Source Sans Pro"), url("../fonts/SourceSansPro-SemiboldIt.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-weight: 700;
+  font-style: italic;
+  font-stretch: normal;
+  src: local("SourceSansPro-BoldIt"), local("Source Sans Pro"), url("../fonts/SourceSansPro-BoldIt.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-weight: 900;
+  font-style: italic;
+  font-stretch: normal;
+  src: local("SourceSansPro-BlackIt"), local("Source Sans Pro"), url("../fonts/SourceSansPro-BlackIt.woff") format("woff");
+}
+
+/* Preferred icon size */
+.hei, .html-editor-fileupload-row .html-editor-button .hei-close,
+.html-editor-fileupload-row .html-editor-button .hei-times,
+.html-editor-fileupload-row .html-editor-button .html-editor-icon-trash {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 1.5em;
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: rtl;
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+.hei-primary {
+  color: #007bff;
+}
+
+.hei-light {
+  color: #f8f9fa;
+}
+
+.hei-secondary {
+  color: #6c757d;
+}
+
+.hei-info {
+  color: #17a2b8;
+}
+
+.hei-warning {
+  color: #ffc107;
+}
+
+.hei-error {
+  color: #dc3545;
+}
+
+.hei-danger {
+  color: #dc3545;
+}
+
+.hei-success {
+  color: #28a745;
+}
+
+.html-editor-helper-hidden-accessible {
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.html-editor-scrollbar-measure {
+  width: 100px;
+  height: 100px;
+  overflow: scroll;
+  position: absolute;
+  top: -9999px;
+}
+
+.html-editor-helper-hidden {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  body {
+    overflow-x: hidden;
+  }
+  .header,
+.footer,
+.body {
+    width: 100vw;
+  }
+}
+
+.html-editor-chkbox-box:hover:not(.html-editor-state-disabled), .html-editor-colorpicker:not(:disabled):not(.html-editor-state-disabled):focus, .html-editor-spinner:not(:disabled):not(.html-editor-state-disabled):focus, .html-editor-textbox:not(:disabled):not(.html-editor-state-disabled):focus, .html-editor-colorpicker:not(:disabled):not(.html-editor-state-disabled):hover, .html-editor-spinner:not(:disabled):not(.html-editor-state-disabled):hover, .html-editor-textbox:not(:disabled):not(.html-editor-state-disabled):hover {
+  box-shadow: inset 0 4px 7px 0 rgba(0, 0, 0, 0.03);
+  border: 1px solid #cecece;
+}
+
+.html-editor-spinner.html-editor-state-disabled, .html-editor-chkbox-box.html-editor-state-disabled, .html-editor-colorpicker:disabled, .html-editor-spinner:disabled, .html-editor-textbox:disabled {
+  color: rgba(58, 58, 58, 0.4);
+  box-shadow: inset 0 4px 7px 0 rgba(0, 0, 0, 0.03);
+  background-color: rgba(255, 255, 255, 0.7);
+  border: solid 1px #eaeaea;
+  opacity: 1;
+}
+
+.html-editor-spinner.html-editor-state-disabled::placeholder, .html-editor-chkbox-box.html-editor-state-disabled::placeholder, .html-editor-colorpicker:disabled::placeholder, .html-editor-spinner:disabled::placeholder, .html-editor-textbox:disabled::placeholder {
+  color: rgba(58, 58, 58, 0.4);
+}
+
+.html-editor-spinner.html-editor-state-disabled .html-editor-inputtext, .html-editor-chkbox-box.html-editor-state-disabled .html-editor-inputtext, .html-editor-colorpicker:disabled .html-editor-inputtext, .html-editor-spinner:disabled .html-editor-inputtext, .html-editor-textbox:disabled .html-editor-inputtext {
+  background-color: rgba(255, 255, 255, 0.7);
+  color: rgba(58, 58, 58, 0.4);
+}
+
+input {
+  color: #88989b;
+  font-size: 0.875rem;
+}
+
+input::placeholder {
+  color: #3a3a3a;
+}
+
+.html-editor-colorpicker, .html-editor-spinner, .html-editor-textbox {
+  border: 1px solid #dadfe2;
+  border-radius: 4px;
+  box-shadow: inset 0 4px 3px 0 rgba(0, 0, 0, 0.03);
+  background-color: #ffffff;
+}
+
+.html-editor-colorpicker, .html-editor-spinner, .html-editor-textbox {
+  height: 2.1875rem;
+  line-height: 1.75rem;
+  color: #88989b;
+  font-size: 0.875rem;
+  transition: none;
+  outline: none;
+}
+
+.html-editor-colorpicker:not(:disabled):not(.html-editor-state-disabled):focus, .html-editor-spinner:not(:disabled):not(.html-editor-state-disabled):focus, .html-editor-textbox:not(:disabled):not(.html-editor-state-disabled):focus {
+  box-shadow: inset 0 4px 3px 0 rgba(0, 0, 0, 0.03);
+}
+
+@media (max-width: 768px) {
+  .html-editor-colorpicker, .html-editor-spinner, .html-editor-textbox,
+input {
+    font-size: 1rem;
+  }
+}
+
+html-editor-button[type],
+p-button[type] {
+  -webkit-appearance: none;
+}
+
+.html-editor-button {
+  -webkit-appearance: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  outline: none;
+  line-height: initial;
+  font-size: 1.0625rem;
+  box-shadow: none;
+  transition: none;
+  background-size: auto;
+  background-repeat: no-repeat;
+}
+
+.html-editor-button:focus {
+  outline: none;
+}
+
+.html-editor-button:not(.html-editor-state-disabled) {
+  cursor: pointer;
+}
+
+.html-editor-button:not(.html-editor-state-disabled):hover:not(:active) {
+  background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1));
+  background-size: auto;
+  box-shadow: inset 0 -3px 0 0 rgba(255, 255, 255, 0.2);
+}
+
+.html-editor-button:not(.html-editor-state-disabled):active {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1));
+  background-size: auto;
+  box-shadow: inset 0 3px 0 0 rgba(0, 0, 0, 0.1);
+}
+
+.html-editor-button.html-editor-state-disabled {
+  opacity: 0.2;
+  cursor: initial;
+}
+
+.html-editor-button .html-editor-button-text {
+  vertical-align: middle;
+  line-height: 1.5rem;
+}
+
+.html-editor-button .hei, .html-editor-fileupload-row .html-editor-button .hei-close,
+.html-editor-fileupload-row .html-editor-button .hei-times,
+.html-editor-fileupload-row .html-editor-button .html-editor-icon-trash {
+  vertical-align: middle;
+}
+
+.html-editor-button.btn-primary {
+  background-color: #007bff;
+  color: #ffffff;
+}
+
+.html-editor-button.btn-light {
+  background-color: #f8f9fa;
+  color: #3a474d;
+}
+
+.html-editor-button.btn-secondary {
+  background-color: #6c757d;
+  color: #ffffff;
+}
+
+.html-editor-button.btn-info {
+  background-color: #17a2b8;
+  color: #ffffff;
+}
+
+.html-editor-button.btn-warning {
+  background-color: #ffc107;
+  color: #ffffff;
+}
+
+.html-editor-button.btn-error {
+  background-color: #dc3545;
+  color: #ffffff;
+}
+
+.html-editor-button.btn-danger {
+  background-color: #dc3545;
+  color: #ffffff;
+}
+
+.html-editor-button.btn-success {
+  background-color: #28a745;
+  color: #ffffff;
+}
+
+.html-editor-button-md, .html-editor-fileupload-choose {
+  font-size: 1.0625rem;
+  font-weight: normal;
+  padding: 0 2rem;
+  height: 2.1875rem;
+}
+
+.html-editor-button-md.html-editor-button-text-icon-left, .html-editor-button-text-icon-left.html-editor-fileupload-choose {
+  padding: 0 1.375rem;
+}
+
+.html-editor-button-md.html-editor-button-icon-only, .html-editor-button-icon-only.html-editor-fileupload-choose {
+  padding: 0 0.5rem;
+}
+
+.html-editor-button-md .hei, .html-editor-button-md .html-editor-fileupload-row .html-editor-button .hei-close, .html-editor-fileupload-row .html-editor-button .html-editor-button-md .hei-close,
+.html-editor-button-md .html-editor-fileupload-row .html-editor-button .hei-times,
+.html-editor-fileupload-row .html-editor-button .html-editor-button-md .hei-times,
+.html-editor-button-md .html-editor-fileupload-row .html-editor-button .html-editor-icon-trash,
+.html-editor-fileupload-row .html-editor-button .html-editor-button-md .html-editor-icon-trash, .html-editor-fileupload-choose .hei, .html-editor-fileupload-choose .html-editor-fileupload-row .html-editor-button .hei-close, .html-editor-fileupload-row .html-editor-button .html-editor-fileupload-choose .hei-close,
+.html-editor-fileupload-choose .html-editor-fileupload-row .html-editor-button .hei-times,
+.html-editor-fileupload-row .html-editor-button .html-editor-fileupload-choose .hei-times,
+.html-editor-fileupload-choose .html-editor-fileupload-row .html-editor-button .html-editor-icon-trash,
+.html-editor-fileupload-row .html-editor-button .html-editor-fileupload-choose .html-editor-icon-trash {
+  font-size: 1.0625rem;
+  height: auto;
+  line-height: 2.1875rem;
+  width: 1.25rem;
+}
+
+.html-editor-button-md .html-editor-button-text, .html-editor-fileupload-choose .html-editor-button-text {
+  line-height: 2.1875rem;
+}
+
+.html-editor-button-sm, .html-editor-fileupload .html-editor-button {
+  font-size: 0.875rem;
+  padding: 0 2.875rem;
+  height: 1.75rem;
+}
+
+.html-editor-button-sm.html-editor-button-text-icon-left, .html-editor-fileupload .html-editor-button-text-icon-left.html-editor-button {
+  padding: 0 1.375rem;
+}
+
+.html-editor-button-sm.html-editor-button-icon-only, .html-editor-fileupload .html-editor-button-icon-only.html-editor-button {
+  padding: 0 0.3125rem;
+}
+
+.html-editor-button-sm .hei, .html-editor-button-sm .html-editor-fileupload-row .html-editor-button .hei-close, .html-editor-fileupload-row .html-editor-button .html-editor-button-sm .hei-close,
+.html-editor-button-sm .html-editor-fileupload-row .html-editor-button .hei-times,
+.html-editor-fileupload-row .html-editor-button .html-editor-button-sm .hei-times,
+.html-editor-button-sm .html-editor-fileupload-row .html-editor-button .html-editor-icon-trash,
+.html-editor-fileupload-row .html-editor-button .html-editor-button-sm .html-editor-icon-trash, .html-editor-fileupload .html-editor-button .hei, .html-editor-fileupload .html-editor-fileupload-row .html-editor-button .hei-close, .html-editor-fileupload-row .html-editor-fileupload .html-editor-button .hei-close,
+.html-editor-fileupload .html-editor-fileupload-row .html-editor-button .hei-times,
+.html-editor-fileupload-row .html-editor-fileupload .html-editor-button .hei-times,
+.html-editor-fileupload .html-editor-fileupload-row .html-editor-button .html-editor-icon-trash,
+.html-editor-fileupload-row .html-editor-fileupload .html-editor-button .html-editor-icon-trash {
+  font-size: 0.9375rem;
+  height: auto;
+  line-height: 1.75rem;
+  width: 1.125rem;
+}
+
+.html-editor-button-sm .html-editor-button-text, .html-editor-fileupload .html-editor-button .html-editor-button-text {
+  line-height: 1.75rem;
+}
+
+@keyframes button-icon-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.html-editor-checkbox-list-vertical .html-editor-checkbox {
+  display: flex;
+  align-items: center;
+  margin: 1rem 0;
+  cursor: pointer;
+}
+
+.html-editor-checkbox-list-horizontal .html-editor-checkbox {
+  display: inline-flex;
+  align-items: center;
+}
+
+.html-editor-state-disabled .html-editor-checkbox {
+  cursor: initial;
+}
+
+.html-editor-chkbox-label {
+  margin: 0 1rem 0 0.5rem;
+}
+
+.html-editor-chkbox {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  width: 1.25rem;
+  min-width: 1.25rem;
+  height: 1.25rem;
+}
+
+.html-editor-chkbox .html-editor-helper-hidden-accessible {
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.html-editor-chkbox-box {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #dadfe2;
+  border-radius: 2px;
+  box-shadow: inset 0 4px 3px 0 rgba(0, 0, 0, 0.03);
+  background-color: #ffffff;
+}
+
+.html-editor-chkbox-box.html-editor-state-disabled {
+  cursor: initial;
+}
+
+.html-editor-chkbox-box .hei, .html-editor-chkbox-box .html-editor-fileupload-row .html-editor-button .hei-close, .html-editor-fileupload-row .html-editor-button .html-editor-chkbox-box .hei-close,
+.html-editor-chkbox-box .html-editor-fileupload-row .html-editor-button .hei-times,
+.html-editor-fileupload-row .html-editor-button .html-editor-chkbox-box .hei-times,
+.html-editor-chkbox-box .html-editor-fileupload-row .html-editor-button .html-editor-icon-trash,
+.html-editor-fileupload-row .html-editor-button .html-editor-chkbox-box .html-editor-icon-trash {
+  width: 0.875rem;
+  height: 0.875rem;
+  font-size: 0.875rem;
+  color: #ffffff;
+  vertical-align: middle;
+  background-color: transparent;
+  border-radius: 0;
+}
+
+.html-editor-chkbox-box .hei-check:before {
+  content: 'check';
+}
+
+.html-editor-chkbox-box .hei-times {
+  width: 0.875rem;
+  height: 0.875rem;
+  font-size: 0.875rem;
+}
+
+.html-editor-chkbox-box .hei-times:before {
+  content: 'remove';
+}
+
+.html-editor-chkbox-box.html-editor-state-active {
+  background-color: #3f8cb3;
+  border: 1px solid #dadfe2;
+}
+
+.html-editor-chkbox-box.html-editor-state-active:hover {
+  background-color: #59a6cd;
+}
+
+.html-editor-chkbox-box.html-editor-state-disabled.html-editor-state-active {
+  background-color: #3f8cb3;
+  border: 1px solid #dadfe2;
+  opacity: 0.5;
+}
+
+.html-editor-chkbox-box.html-editor-state-disabled.html-editor-state-active:hover {
+  background-color: #3f8cb3;
+}
+
+.html-editor-fileupload {
+  display: inline-block;
+}
+
+.html-editor-fileupload .html-editor-button {
+  vertical-align: middle;
+  -webkit-appearance: none !important;
+}
+
+.html-editor-fileupload .html-editor-button[disabled] {
+  opacity: 0.5;
+}
+
+.html-editor-fileupload-choose {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: middle;
+  background-color: #6c757d;
+  color: #ffffff;
+}
+
+.html-editor-fileupload-choose input[type='file'] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  opacity: 0;
+  min-height: 100%;
+  cursor: pointer;
+}
+
+.html-editor-fileupload-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.html-editor-fileupload-row > div {
+  margin: 0 0.75rem;
+}
+
+.html-editor-fileupload-row .html-editor-button-text {
+  display: none;
+}
+
+.html-editor-fileupload-row .html-editor-button .hei-close,
+.html-editor-fileupload-row .html-editor-button .hei-times,
+.html-editor-fileupload-row .html-editor-button .html-editor-icon-trash {
+  display: block;
+}
+
+.html-editor-fileupload-row .html-editor-button .hei-close:before,
+.html-editor-fileupload-row .html-editor-button .hei-times:before,
+.html-editor-fileupload-row .html-editor-button .html-editor-icon-trash:before {
+  content: 'close';
+}
+
+.html-editor-fileupload-buttonbar {
+  position: relative;
+  background-color: rgba(230, 236, 239, 0.5);
+  padding: 0.75rem;
+  border-radius: 4px;
+}
+
+.html-editor-fileupload-buttonbar .html-editor-button:nth-child(3) {
+  float: right;
+  background-color: #dadfe2;
+  color: #3a474d;
+}
+
+.html-editor-fileupload-files {
+  background-color: #ffffff;
+  padding: 1rem 0;
+}
+
+.html-editor-dialog {
+  position: fixed;
+  overflow: hidden;
+  background-color: #ffffff;
+  box-shadow: 0 22px 64px 0 rgba(0, 0, 0, 0.22);
+  border-radius: 4px;
+}
+
+.html-editor-dialog-titlebar {
+  background-color: rgba(243, 245, 247, 0.56);
+  padding: 0.6875rem 1.25rem;
+  font-size: 1.25rem;
+  line-height: 1.875rem;
+  border-bottom: none;
+}
+
+.html-editor-dialog-title {
+  font-weight: normal;
+  letter-spacing: normal;
+  color: inherit;
+}
+
+.html-editor-dialog-titlebar-close {
+  float: right;
+}
+
+.html-editor-dialog-titlebar-close .hei-times {
+  font-size: 1.25rem;
+  color: #88989b;
+  vertical-align: middle;
+}
+
+.html-editor-dialog-titlebar-close .hei-times:before {
+  content: 'close';
+}
+
+.html-editor-dialog-titlebar-close:hover .hei-times {
+  color: #88989b;
+}
+
+.html-editor-dialog-content {
+  padding: 1.25rem;
+  overflow: auto;
+}
+
+.html-editor-confirmdialog {
+  top: 50%;
+  left: 50%;
+}
+
+.html-editor-dialog-mask {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: #3a474d;
+  opacity: 0.5;
+}
+
+.html-editor-dialog-footer {
+  text-align: right;
+  border: 0 none;
+  padding: 1em;
+}
+
+.html-editor-dialog-footer .html-editor-button {
+  text-align: left !important;
+  padding: 6px;
+}
+
+.html-editor-dialog-footer .html-editor-button:first-child {
+  background-color: #007bff;
+  width: 80px;
+}
+
+.html-editor-dialog-footer .html-editor-button:last-child {
+  background-color: #6c757d;
+  width: 105px;
+}
+
+@media (max-width: 768px) {
+  .html-editor-dialog:not(.html-editor-confirmdialog) {
+    width: 100% !important;
+    top: 0px !important;
+  }
+  .html-editor-dialog-content {
+    -webkit-overflow-scrolling: touch;
+  }
+  .no-scroll {
+    padding-right: 0;
+  }
+}
+
+.no-scroll {
+  overflow: hidden;
+  padding-right: 15px;
+}
+
+.html-editor-dialog-wrapper {
+  display: flex;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  z-index: 1001;
+  align-items: center;
+  justify-content: center;
+}
+
+.html-editor-dialog-wrapper .html-editor-dialog {
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: static;
+}
+
+.html-editor-dialog-wrapper .html-editor-dialog-content {
+  flex: 0 1 auto;
+  overflow: auto;
+}
+
+/*@import 'components/blazor/form';*/
+.html-editor-link .html-editor-link-text {
+  vertical-align: middle;
+}
+
+.html-editor-link .hei, .html-editor-link .html-editor-fileupload-row .html-editor-button .hei-close, .html-editor-fileupload-row .html-editor-button .html-editor-link .hei-close,
+.html-editor-link .html-editor-fileupload-row .html-editor-button .hei-times,
+.html-editor-fileupload-row .html-editor-button .html-editor-link .hei-times,
+.html-editor-link .html-editor-fileupload-row .html-editor-button .html-editor-icon-trash,
+.html-editor-fileupload-row .html-editor-button .html-editor-link .html-editor-icon-trash {
+  font-size: inherit;
+  vertical-align: middle;
+}
+
+.html-editor-state-highlight .link {
+  color: #ffffff;
+}
+
+.html-editor-spinner {
+  display: inline-block;
+  position: relative;
+  padding: 0px;
+}
+
+.html-editor-spinner input[type='number'],
+.html-editor-spinner input[type='text'] {
+  -moz-appearance: textfield;
+  width: 100%;
+  height: 100%;
+  border: none;
+  background-color: transparent;
+  line-height: 1.5rem;
+  text-align: inherit;
+  padding: 1px 18px 1px 0.5rem;
+  outline: none;
+}
+
+.html-editor-spinner input[type='number']::-webkit-inner-spin-button, .html-editor-spinner input[type='number']::-webkit-outer-spin-button,
+.html-editor-spinner input[type='text']::-webkit-inner-spin-button,
+.html-editor-spinner input[type='text']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.html-editor-spinner.html-editor-state-disabled .html-editor-spinner-button {
+  background-color: #dadfe2;
+  color: #88989b;
+}
+
+.html-editor-spinner.html-editor-state-disabled .html-editor-spinner-button:active, .html-editor-spinner.html-editor-state-disabled .html-editor-spinner-button:hover {
+  background-color: #dadfe2;
+  color: #88989b;
+  background-image: none;
+  box-shadow: none;
+  cursor: initial;
+}
+
+.html-editor-spinner-button {
+  position: absolute;
+  right: 2px;
+  padding: 0;
+  width: 0.875rem;
+  height: 0.875rem;
+  border-radius: 2px;
+  background-color: #479cc8;
+  color: #ffffff;
+}
+
+.html-editor-spinner-button:hover {
+  background-color: #479cc8;
+}
+
+.html-editor-spinner-button .hei, .html-editor-spinner-button .html-editor-fileupload-row .html-editor-button .hei-close, .html-editor-fileupload-row .html-editor-button .html-editor-spinner-button .hei-close,
+.html-editor-spinner-button .html-editor-fileupload-row .html-editor-button .hei-times,
+.html-editor-fileupload-row .html-editor-button .html-editor-spinner-button .hei-times,
+.html-editor-spinner-button .html-editor-fileupload-row .html-editor-button .html-editor-icon-trash,
+.html-editor-fileupload-row .html-editor-button .html-editor-spinner-button .html-editor-icon-trash {
+  font-size: 0.875rem;
+  vertical-align: top;
+}
+
+.html-editor-spinner-button .hei-caret-up:before {
+  content: 'expand_less';
+}
+
+.html-editor-spinner-button .hei-caret-down:before {
+  content: 'expand_more';
+}
+
+.html-editor-spinner-up {
+  top: 2px;
+}
+
+.html-editor-spinner-down {
+  bottom: 2px;
+}
+
+.html-editor {
+  display: flex;
+  flex-direction: column;
+  border-radius: 4px;
+  border: 1px solid #dadfe2;
+}
+
+.html-editor-content {
+  flex: 1;
+  overflow: auto;
+  padding: 0.5rem;
+  outline: none;
+  background-color: #ffffff;
+}
+
+.html-editor-toolbar {
+  border-bottom: 1px solid #dadfe2;
+  display: flex;
+  line-height: 1rem;
+  flex-wrap: wrap;
+  background-color: #ffffff;
+  /*  > * {
+    margin: $html-editor-toolbar-item-margin;
+  }*/
+}
+
+.html-editor-toolbar .hei, .html-editor-toolbar .html-editor-fileupload-row .html-editor-button .hei-close, .html-editor-fileupload-row .html-editor-button .html-editor-toolbar .hei-close,
+.html-editor-toolbar .html-editor-fileupload-row .html-editor-button .hei-times,
+.html-editor-fileupload-row .html-editor-button .html-editor-toolbar .hei-times,
+.html-editor-toolbar .html-editor-fileupload-row .html-editor-button .html-editor-icon-trash,
+.html-editor-fileupload-row .html-editor-button .html-editor-toolbar .html-editor-icon-trash {
+  font-size: 1rem;
+}
+
+.html-editor-colorpicker-toolbar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  padding: 0.625rem;
+}
+
+.html-editor-colorpicker-toolbar .html-editor-colorpicker-trigger {
+  color: inherit;
+  background-color: #ffffff;
+}
+
+.html-editor-colorpicker-toolbar .html-editor-colorpicker-value {
+  display: none;
+}
+
+.html-editor-colorpicker-toolbar .html-editor-colorpicker {
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  height: auto;
+}
+
+.html-editor-colorpicker-toolbar .html-editor-colorpicker:hover {
+  border: none;
+  box-shadow: none;
+}
+
+.html-editor-color {
+  border: none;
+  display: flex;
+  flex-direction: column;
+  background: inherit;
+  color: inherit;
+  appearance: none;
+  padding: 0;
+  position: relative;
+}
+
+.html-editor-color:disabled {
+  color: rgba(58, 58, 58, 0.4);
+}
+
+.html-editor-color-value {
+  position: absolute;
+  bottom: -4px;
+  height: 4px;
+  width: 100%;
+}
+
+.html-editor-button-toolbar {
+  color: #88989b;
+  appearance: none;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  padding: 0.625rem;
+}
+
+.html-editor-button-toolbar.selected {
+  background-color: #479cc8;
+  color: #ffffff;
+  border-radius: 4px;
+}
+
+.html-editor-button-toolbar:disabled {
+  color: rgba(58, 58, 58, 0.4);
+}
+
+.html-editor-dropdown {
+  display: inline-flex;
+  padding: 0.625rem;
+  align-items: center;
+  cursor: pointer;
+}
+
+.html-editor-dropdown.disabled {
+  color: rgba(58, 58, 58, 0.4);
+  cursor: default;
+}
+
+.html-editor-dropdown-items {
+  position: absolute;
+  transform: translateY(-4px);
+  background-color: #ffffff;
+  border-radius: 4px;
+  border: 1px solid #dadfe2;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+}
+
+.html-editor-dropdown-item {
+  cursor: default;
+  font-size: 0.875rem;
+  padding: 0.25rem 0.625rem;
+  white-space: nowrap;
+}
+
+.html-editor-dropdown-item:hover {
+  background-color: #59a6cd;
+  color: #ffffff;
+  border-radius: 0;
+}
+
+.html-editor-dropdown-item.selected {
+  background-color: #479cc8;
+  color: #ffffff;
+}
+
+.html-editor-dropdown-trigger {
+  border: none;
+  appearance: none;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  color: inherit;
+  background-color: inherit;
+}
+
+.html-editor-dropdown-trigger .hei:before, .html-editor-dropdown-trigger .html-editor-fileupload-row .html-editor-button .hei-close:before, .html-editor-fileupload-row .html-editor-button .html-editor-dropdown-trigger .hei-close:before,
+.html-editor-dropdown-trigger .html-editor-fileupload-row .html-editor-button .hei-times:before,
+.html-editor-fileupload-row .html-editor-button .html-editor-dropdown-trigger .hei-times:before,
+.html-editor-dropdown-trigger .html-editor-fileupload-row .html-editor-button .html-editor-icon-trash:before,
+.html-editor-fileupload-row .html-editor-button .html-editor-dropdown-trigger .html-editor-icon-trash:before {
+  content: 'arrow_drop_down';
+}
+
+.html-editor-dropdown-items {
+  display: none;
+}
+
+.html-editor-dialog-item {
+  margin-bottom: 1rem;
+}
+
+.html-editor-dialog-item label:first-child {
+  display: block;
+}
+
+.html-editor-dialog-buttons {
+  text-align: right;
+}
+
+.html-editor-separator {
+  width: 1px;
+  background-color: #dadfe2;
+}
+
+.html-editor-colorpicker {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.html-editor-colorpicker.html-editor-disabled {
+  color: rgba(58, 58, 58, 0.4);
+  cursor: default;
+}
+
+button.html-editor-colorpicker-trigger {
+  border: none;
+  appearance: none;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  color: #88989b;
+  background-color: inherit;
+  outline: none;
+}
+
+button.html-editor-colorpicker-trigger .hei:before, button.html-editor-colorpicker-trigger .html-editor-fileupload-row .html-editor-button .hei-close:before, .html-editor-fileupload-row .html-editor-button button.html-editor-colorpicker-trigger .hei-close:before,
+button.html-editor-colorpicker-trigger .html-editor-fileupload-row .html-editor-button .hei-times:before,
+.html-editor-fileupload-row .html-editor-button button.html-editor-colorpicker-trigger .hei-times:before,
+button.html-editor-colorpicker-trigger .html-editor-fileupload-row .html-editor-button .html-editor-icon-trash:before,
+.html-editor-fileupload-row .html-editor-button button.html-editor-colorpicker-trigger .html-editor-icon-trash:before {
+  content: 'arrow_drop_down';
+}
+
+.html-editor-colorpicker-popup {
+  display: none;
+  position: absolute;
+  border: 1px solid #dadfe2;
+  background-color: #ffffff;
+  box-shadow: 0 6px 14px 0 rgba(0, 0, 0, 0.06);
+  min-width: 200px;
+  max-width: 280px;
+  padding: 0.625rem;
+  border-radius: 4px;
+}
+
+.html-editor-colorpicker-value {
+  flex: 1;
+  border-radius: 4px;
+  border: 1px solid #dadfe2;
+  min-width: 20px;
+  min-height: 20px;
+}
+
+.html-editor-saturation-picker {
+  height: 150px;
+  position: relative;
+  touch-action: none;
+  border-radius: 4px;
+}
+
+.html-editor-saturation-white {
+  background: linear-gradient(to right, #fff, rgba(255, 255, 255, 0));
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.06);
+}
+
+.html-editor-saturation-black,
+.html-editor-saturation-white {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 4px;
+  border-top-left-radius: 3px;
+}
+
+.html-editor-saturation-black {
+  background: linear-gradient(to top, #000, rgba(0, 0, 0, 0));
+}
+
+.html-editor-saturation-handle {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: white 0px 0px 0px 1px, rgba(0, 0, 0, 0.3) 0px 0px 1px 1px inset, rgba(0, 0, 0, 0.4) 0px 0px 1px 2px;
+}
+
+.html-editor-hue-picker {
+  margin-bottom: 8px;
+  touch-action: none;
+  position: relative;
+  background-image: linear-gradient(to right, red 0%, yellow 17%, lime 33%, cyan 50%, blue 67%, magenta 83%, red 100%);
+  border-radius: 4px;
+  height: 12px;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.06);
+}
+
+.html-editor-alpha-picker {
+  touch-action: none;
+  position: relative;
+  border-radius: 4px;
+  height: 12px;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.06);
+}
+
+.html-editor-hue-handle,
+.html-editor-alpha-handle {
+  position: absolute;
+  height: 100%;
+  width: 8px;
+  border: 1px solid #fff;
+  border-radius: 2px;
+  transform: translateX(-50%);
+  box-shadow: white 0px 0px 0px 1px, rgba(0, 0, 0, 0.3) 0px 0px 1px 1px inset, rgba(0, 0, 0, 0.4) 0px 0px 1px 2px;
+}
+
+.html-editor-colorpicker-preview-area {
+  display: flex;
+}
+
+.html-editor-hue-and-alpha {
+  flex: 1;
+  padding-right: 8px;
+}
+
+.html-editor-alpha-picker:before,
+.html-editor-colorpicker-preview:before {
+  position: absolute;
+  z-index: -1;
+  content: '';
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  border-radius: 4px;
+  background-image: linear-gradient(45deg, #cccccc 25%, transparent 25%), linear-gradient(-45deg, #cccccc 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #cccccc 75%), linear-gradient(-45deg, transparent 75%, #cccccc 75%);
+  background-size: 8px 8px;
+  background-position: 0 0, 0 4px, 4px -4px, -4px 0px;
+}
+
+.html-editor-colorpicker-preview {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.25) 0px 0px 4px inset;
+  border-radius: 4px;
+}
+
+.html-editor-colorpicker-rgba {
+  display: flex;
+}
+
+.html-editor-color-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  color: rgba(58, 58, 58, 0.4);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
+
+.html-editor-color-box:not(:last-child) {
+  margin-right: 4px;
+}
+
+.html-editor-color-box .html-editor-textbox {
+  width: 80px;
+  margin-right: 4px;
+  padding: 0 3px;
+  height: 30px;
+}
+
+.html-editor-color-box .html-editor-spinner {
+  padding: 1px 3px;
+  height: 30px;
+}
+
+.html-editor-color-box .html-editor-spinner .html-editor-spinner-input {
+  padding: 0;
+  outline: none;
+}
+
+.html-editor-color-box .html-editor-spinner button {
+  display: none;
+}
+
+.html-editor-color-box .html-editor-spinner button:hover {
+  display: initial;
+}
+
+.html-editor-colorpicker-button {
+  justify-content: flex-end;
+  display: flex;
+}
+
+.html-editor-colorpicker-section:not(:last-child) {
+  margin-bottom: 8px;
+}
+
+.html-editor-colorpicker-colors {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -4px;
+  margin-right: -4px;
+}
+
+.html-editor-colorpicker-item {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  margin: 4px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.25) 0px 0px 4px inset;
+  cursor: pointer;
+}

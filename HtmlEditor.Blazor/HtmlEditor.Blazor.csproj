@@ -1,0 +1,81 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<LibSassOutputStyle>expanded</LibSassOutputStyle>
+		<EnableDefaultSassItems>false</EnableDefaultSassItems>
+		<BaseIntermediateOutputPath />
+		<ImplicitUsings>enable</ImplicitUsings>
+		<ErrorReport>send</ErrorReport>
+		<Copyright>MIT License</Copyright>
+		<PackageIcon>icon.png</PackageIcon>
+		<PackageProjectUrl>https://github.com/Behrouz-Goudarzi/HtmlEditorBlazor</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/Behrouz-Goudarzi/HtmlEditorBlazor</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageTags>htmlEditor,blazor,component</PackageTags>
+		<NeutralLanguage>en</NeutralLanguage>
+		<Description>Component isolated from Radzen</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="LibSassBuilder" Version="2.0.2" />
+
+	<PackageReference Include="Microsoft.AspNetCore.Components" Version="6.0.8" />
+
+	<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.8" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="System.Linq.Dynamic.Core" Version="1.2.20" />
+  </ItemGroup>
+
+ 
+
+  <ItemGroup>
+    <EmbeddedResource Include="LinkerConfig.xml">
+      <LogicalName>$(MSBuildProjectName).xml</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Sass Include="$(MSBuildProjectDirectory)/themes/*.scss" Exclude="$(MSBuildProjectDirectory)/themes/_*.scss" Condition="'$(TargetFramework)' == 'net6.0'" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <SassFile Include="themes\components\blazor\_button.scss" />
+    <SassFile Include="themes\components\blazor\_checkbox.scss" />
+    <SassFile Include="themes\components\blazor\_colorpicker.scss" />
+    <SassFile Include="themes\components\blazor\_common.scss" />
+    <SassFile Include="themes\components\blazor\_dialog.scss" />
+    <SassFile Include="themes\components\blazor\_dropdown.scss" />
+    <SassFile Include="themes\components\blazor\_editor.scss" />
+    <SassFile Include="themes\components\blazor\_icons.scss" />
+    <SassFile Include="themes\components\blazor\_input.scss" />
+    <SassFile Include="themes\components\blazor\_link.scss" />
+    <SassFile Include="themes\components\blazor\_numeric.scss" />
+    <SassFile Include="themes\components\blazor\_textbox.scss" />
+    <SassFile Include="themes\components\blazor\_upload.scss" />
+    <SassFile Include="themes\default.scss" />
+    <SassFile Include="themes\_colors.scss" />
+    <SassFile Include="themes\_components.scss" />
+    <SassFile Include="themes\_fonts.scss" />
+    <SassFile Include="themes\_variables.scss" />
+  </ItemGroup>
+
+
+
+ <Target Name="Sass" BeforeTargets="BeforeBuild" Condition="'$(TargetFramework)' == 'net6.0'">
+    <PropertyGroup>
+      <_SassFileList>@(Sass->'"%(FullPath)"', ' ')</_SassFileList>
+      <LibSassBuilderArgs>files $(_SassFileList) --outputstyle $(LibSassOutputStyle) --level $(LibSassOutputLevel)</LibSassBuilderArgs>
+    </PropertyGroup>
+    <Message Text="$(LibSassBuilderArgs)" Importance="$(LibSassMessageLevel)" />
+    <Message Text="Converted SassFile list to argument" Importance="$(LibSassMessageLevel)" />
+  </Target>
+
+  <Target Name="MoveCss" AfterTargets="AfterCompile" Condition="'$(TargetFramework)' == 'net6.0'">
+    <ItemGroup>
+        <CssFile Include="$(MSBuildProjectDirectory)/themes/*.css" />
+    </ItemGroup>
+    <Move SourceFiles="@(CssFile)" DestinationFolder="$(MSBuildProjectDirectory)/wwwroot/css/" />
+  </Target>
+
+</Project>

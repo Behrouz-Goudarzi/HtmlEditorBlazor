@@ -1,0 +1,65 @@
+@using System.Text
+@using HtmlEditor.Blazor.Rendering
+@using Microsoft.JSInterop
+@inherits HtmlEditorButtonBase
+@inject HtmlEditorDialogService DialogService
+@inject IJSRuntime JSRuntime
+
+<EditorButton Title=@Title Click=@OnClick Icon="insert_link" />
+
+@code {
+    protected override async Task OnClick()
+    {
+        await Editor.SaveSelectionAsync();
+
+        bool blank = false;
+
+        var attributes = await JSRuntime.InvokeAsync<LinkAttributes>("HtmlEditor.selectionAttributes", "a", new[] {"innerText",
+"href", "target" });
+
+        if (attributes.Target == "_blank")
+        {
+            blank = true;
+        }
+
+        var result = await DialogService.OpenAsync(Title, ds =>
+    @<div >
+        <div class="html-editor-dialog-item">
+            <label>@UrlText</label>
+            <HtmlEditorTextBox @bind-Value=@attributes.Href style="width: 100%" />
+        </div>
+        @if (string.IsNullOrWhiteSpace(attributes.InnerHtml) || attributes.InnerHtml == "<br>")
+        {
+        <div class="html-editor-dialog-item">
+            <label>@LinkText</label>
+            <HtmlEditorTextBox @bind-Value=@attributes.InnerText style="width: 100%" />
+        </div>
+        }
+        <div class="html-editor-dialog-item">
+            <HtmlEditorCheckBox @bind-Value=@blank />
+            <label>@OpenInNewWindowText</label>
+        </div>
+        <div class="html-editor-dialog-buttons">
+            <HtmlEditorButton Text=@OkText Click="()=> ds.Close(true)" />
+            <HtmlEditorButton Text=@CancelText Click="()=> ds.Close(false)" ButtonStyle="ButtonStyle.Secondary" />
+        </div>
+    </div>);
+
+        await Editor.RestoreSelectionAsync();
+
+        if (result == true && !String.IsNullOrEmpty(attributes.Href))
+        {
+            var html = new StringBuilder();
+            html.AppendFormat("<a href=\"{0}\"", attributes.Href);
+            if (blank)
+            {
+                html.Append(" target=\"_blank\"");
+            }
+
+            html.AppendFormat(">{0}</a>", string.IsNullOrEmpty(attributes.InnerText) ? attributes.InnerHtml : attributes.InnerText);
+
+            await Editor.ExecuteCommandAsync("insertHTML", html.ToString());
+        }
+
+    }
+}

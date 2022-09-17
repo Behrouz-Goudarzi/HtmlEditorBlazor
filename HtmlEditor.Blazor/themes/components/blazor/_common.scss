@@ -1,0 +1,28 @@
+.html-editor-helper-hidden-accessible {
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.html-editor-scrollbar-measure {
+  width: 100px;
+  height: 100px;
+  overflow: scroll;
+  position: absolute;
+  top: -9999px;
+}
+
+.html-editor-helper-hidden {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  body {
+    overflow-x: hidden;
+  }
+  .header,
+  .footer,
+  .body {
+    width: 100vw;
+  }
+}

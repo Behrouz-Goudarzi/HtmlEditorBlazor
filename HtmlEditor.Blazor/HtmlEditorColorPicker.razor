@@ -1,0 +1,118 @@
+@using HtmlEditor.Blazor.Rendering
+@using System.Text.RegularExpressions
+@using Microsoft.JSInterop
+@inherits FormComponent<string>
+
+@if (Visible)
+{
+    <div @ref=@Element style=@Style @onclick=@Toggle @attributes=@Attributes class=@GetCssClass() id=@GetId()>
+        @if(Icon != null)
+        {
+            <i class="hei">@Icon</i>
+        }
+        <div class="html-editor-colorpicker-value" style="background-color: @Color" ></div>
+        <button type="button" tabindex="-1" class="html-editor-colorpicker-trigger" disabled=@Disabled @onclick:preventDefault><i class="hei" /></button>
+        <Popup @ref=@Popup class="html-editor-colorpicker-popup" Close=@Close Open=@Open>
+            @if (ShowHSV)
+            {
+                <Draggable class="html-editor-saturation-picker html-editor-colorpicker-section" style=@($"background-color: {HSV.ToRGB().ToCSS()}") Drag=@OnSaturationMove>
+                    <div class="html-editor-saturation-white">
+                        <div class="html-editor-saturation-black"></div>
+                        <div class="html-editor-saturation-handle" style=@($"top: {(SaturationHandleTop*100).ToInvariantString()}%; left: {(SaturationHandleLeft * 100).ToInvariantString()}%")></div>
+                    </div>
+                </Draggable>
+                <div class="html-editor-colorpicker-preview-area html-editor-colorpicker-section">
+                    <div class="html-editor-hue-and-alpha">
+                        <Draggable class="html-editor-hue-picker" Drag=@OnHueMove>
+                            <div class="html-editor-hue-handle" style=@($"top: 0; left: {(HueHandleLeft * 100).ToInvariantString()}%")></div>
+                        </Draggable>
+                        <Draggable style=@($"background-image: linear-gradient(to right, {AlphaGradientStart} 0%, {AlphaGradientEnd} 100%)") class="html-editor-alpha-picker" Drag=@OnAlphaMove>
+                            <div class="html-editor-alpha-handle" style=@($"top: 0; left: {(AlphaHandleLeft * 100).ToInvariantString()}%")></div>
+                        </Draggable>
+                    </div>
+                    <div class="html-editor-colorpicker-preview" style=@($"background-color: {Color}")></div>
+                </div>
+            }
+            @if (ShowRGBA)
+            {
+                <div class="html-editor-colorpicker-rgba html-editor-colorpicker-section" @onmousedown:stopPropagation> 
+                    <div class="html-editor-color-box">
+                        <HtmlEditorTextBox Value=@Hex @oninput=@(args => ChangeRGB(args.Value)) />
+                        @HexText
+                    </div>
+                    <div class="html-editor-color-box">
+                        <HtmlEditorNumeric TValue="double" Value=@Red Min="0" Max="255" 
+                            @oninput=@(args => ChangeColor(args.Value, (color, value) => color.Red = value)) 
+                            Change=@(red => ChangeColor(red, (color, value) => color.Red = value)) 
+                        />
+                        @RedText
+                    </div>
+                    <div class="html-editor-color-box">
+                        <HtmlEditorNumeric TValue="double" Value=@Green Min="0" Max="255" 
+                            @oninput=@(args => ChangeColor(args.Value, (color, value) => color.Green = value)) 
+                            Change=@(green => ChangeColor(green, (color, value) => color.Green = value)) 
+                        />
+                        @GreenText
+                    </div>
+                    <div class="html-editor-color-box">
+                        <HtmlEditorNumeric TValue="double" Value=@Blue Min="0" Max="255" 
+                            @oninput=@(args => ChangeColor(args.Value, (color, value) => color.Blue = value)) 
+                            Change=@(blue => ChangeColor(blue, (color, value) => color.Blue = value)) 
+                        />
+                        @BlueText
+                    </div>
+                    <div class="html-editor-color-box">
+                        <HtmlEditorNumeric TValue="double" Value=@Alpha Min="0" Max="100" 
+                            @oninput=@(args => ChangeAlpha(args.Value)) 
+                            Change=@(alpha => ChangeAlpha(alpha)) 
+                        />
+                        @AlphaText
+                    </div>
+                </div>
+            }
+            @if (ShowColors)
+            {
+                <div class="html-editor-colorpicker-colors html-editor-colorpicker-section">
+                    <CascadingValue Value=@this>
+                    @if (ChildContent != null)
+                    {
+                        @ChildContent
+                    }
+                    else
+                    {
+                        <HtmlEditorColorPickerItem Value="ff2800" />
+                        <HtmlEditorColorPickerItem Value="fe9300" />
+                        <HtmlEditorColorPickerItem Value="fefb00" />
+                        <HtmlEditorColorPickerItem Value="02f900" />
+                        <HtmlEditorColorPickerItem Value="00fdff" />
+                        <HtmlEditorColorPickerItem Value="0433ff" />
+                        <HtmlEditorColorPickerItem Value="ff40ff" />
+                        <HtmlEditorColorPickerItem Value="942292" />
+                        <HtmlEditorColorPickerItem Value="aa7942" />
+                        <HtmlEditorColorPickerItem Value="ffffff" />
+                        <HtmlEditorColorPickerItem Value="000000" />
+                        <HtmlEditorColorPickerItem Value="53d5fd" />
+                        <HtmlEditorColorPickerItem Value="73a7fe" />
+                        <HtmlEditorColorPickerItem Value="874efe" />
+                        <HtmlEditorColorPickerItem Value="d357fe" />
+                        <HtmlEditorColorPickerItem Value="ed719e" />
+                        <HtmlEditorColorPickerItem Value="ff8c82" />
+                        <HtmlEditorColorPickerItem Value="ffa57d" />
+                        <HtmlEditorColorPickerItem Value="ffc677" />
+                        <HtmlEditorColorPickerItem Value="fff995" />
+                        <HtmlEditorColorPickerItem Value="ebf38f" />
+                        <HtmlEditorColorPickerItem Value="b1dd8c" />
+                    }
+                    </CascadingValue>
+                </div>
+
+            }
+            @if(ShowButton)
+            {
+                <div class="html-editor-colorpicker-button html-editor-colorpicker-section">
+                    <HtmlEditorButton ButtonStyle="ButtonStyle.Primary" Click=@OnClick Text=@ButtonText @onclick:preventDefault />
+                </div>
+            }
+        </Popup>
+    </div>
+}

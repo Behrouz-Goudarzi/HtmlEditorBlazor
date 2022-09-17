@@ -1,0 +1,101 @@
+$html-editor-input-border: 1px solid #dadfe2 !default;
+$html-editor-input-line-height: 1.75rem !default;
+$html-editor-input-padding: 0.1875rem 0.625rem !default;
+$html-editor-input-font-size: 0.875rem !default;
+$html-editor-input-shadow: inset 0 4px 3px 0 rgba(0, 0, 0, 0.03) !default;
+$html-editor-input-placeholder-color: #3a3a3a !default;
+$html-editor-input-background-color: $white !default;
+$html-editor-input-border-radius: $border-radius !default;
+$html-editor-input-value-color: $body-color !default;
+
+$html-editor-input-hover-shadow: inset 0 4px 7px 0 rgba(0, 0, 0, 0.03) !default;
+$html-editor-input-hover-border: 1px solid #cecece !default;
+
+$html-editor-input-disabled-shadow: inset 0 4px 7px 0 rgba(0, 0, 0, 0.03) !default;
+$html-editor-input-disabled-background-color: rgba(#fff, 0.7) !default;
+$html-editor-input-disabled-border: solid 1px #eaeaea !default;
+$html-editor-input-disabled-color: rgba(#3a3a3a, 0.4) !default;
+$html-editor-input-disabled-placeholder-color: $html-editor-input-disabled-color !default;
+$html-editor-input-disabled-opacity: 1 !default;
+
+$html-editor-input-transition: none !default;
+
+$html-editor-input-focus-shadow: $html-editor-input-shadow !default;
+
+%input-hover {
+  box-shadow: $html-editor-input-hover-shadow;
+  border: $html-editor-input-hover-border;
+}
+
+%input-disabled {
+  color: $html-editor-input-disabled-color;
+  box-shadow: $html-editor-input-disabled-shadow;
+  background-color: $html-editor-input-disabled-background-color;
+  border: $html-editor-input-disabled-border;
+  opacity: $html-editor-input-disabled-opacity;
+
+  &::placeholder {
+    color: $html-editor-input-disabled-placeholder-color;
+  }
+
+  .html-editor-inputtext {
+    background-color: $html-editor-input-disabled-background-color;
+    color: $html-editor-input-disabled-color;
+  }
+}
+
+input {
+  color: $html-editor-input-value-color;
+  font-size: $html-editor-input-font-size;
+
+  &::placeholder {
+    color: $html-editor-input-placeholder-color;
+  }
+}
+
+%input-base {
+  @extend %input-no-padding;
+  
+}
+
+%input-no-padding {
+  border: $html-editor-input-border;
+  border-radius: $html-editor-input-border-radius;
+  box-shadow: $html-editor-input-shadow;
+  background-color: $html-editor-input-background-color;
+}
+
+%input {
+    height: $html-editor-input-height;
+    line-height: $html-editor-input-line-height;
+    color: $html-editor-input-value-color;
+    font-size: $html-editor-input-font-size;
+    transition: $html-editor-input-transition;
+    outline: none;
+
+    @extend %input-base;
+
+    &:not(:disabled):not(.html-editor-state-disabled) {
+        &:hover {
+            @extend %input-hover;
+        }
+
+        &:focus {
+            @extend %input-hover;
+            box-shadow: $html-editor-input-focus-shadow;
+        }
+    }
+
+
+
+    &:disabled {
+        @extend %input-disabled;
+    }
+}
+
+@media (max-width: 768px) {
+  %input,
+  input {
+    font-size: 1rem;
+  }
+}

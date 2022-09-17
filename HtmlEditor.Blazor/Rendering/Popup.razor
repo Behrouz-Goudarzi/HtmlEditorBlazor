@@ -1,0 +1,52 @@
+@inherits HtmlEditorComponentBase
+@using Microsoft.JSInterop
+<div @ref=@Element @onmousedown:preventDefault @attributes=@Attributes style=@Style id=@GetId()>
+    @ChildContent
+</div>
+@code {
+    bool open;
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    [Parameter]
+    public EventCallback Open { get; set; }
+
+    [Parameter]
+    public EventCallback Close { get; set; }
+
+    public async Task ToggleAsync(ElementReference target)
+    {
+        open = !open;
+
+        if (open)
+        {
+            await Open.InvokeAsync(null);
+        }
+
+        await JSRuntime.InvokeVoidAsync("HtmlEditor.togglePopup", target, GetId(), false, Reference, nameof(OnClose));
+    }
+
+    [JSInvokable]
+    public async Task OnClose()
+    {
+        open = false;
+
+        await Close.InvokeAsync(null);
+    }
+
+    public async Task CloseAsync()
+    {
+        await JSRuntime.InvokeVoidAsync("HtmlEditor.closePopup", GetId(), Reference, nameof(OnClose));
+    }
+
+    public override void Dispose()
+    {
+        base.Dispose();
+
+        if (IsJSRuntimeAvailable)
+        {
+            JSRuntime.InvokeVoidAsync("HtmlEditor.destroyPopup", GetId());
+        }
+    }
+}

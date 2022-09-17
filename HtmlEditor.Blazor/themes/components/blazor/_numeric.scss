@@ -1,0 +1,97 @@
+$html-editor-numericline-height: 1.5rem !default;
+$html-editor-numericinput-padding: 1px 18px 1px 0.5rem;
+$html-editor-numericbutton-width: 0.875rem !default;
+$html-editor-numericbutton-height: $html-editor-numericbutton-width !default;
+$html-editor-numericbutton-offset: 2px !default;
+$html-editor-numericbutton-border-radius: 2px !default;
+$html-editor-numericbutton-background-color: $default-link !default;
+$html-editor-numericbutton-disabled-background-color: #dadfe2 !default;
+$html-editor-numericbutton-disabled-color: $cool-grey !default;
+$html-editor-numericbutton-color: $white !default;
+
+.html-editor-spinner {
+  display: inline-block;
+  position: relative;
+
+  @extend %input;
+
+  padding: 0px;
+
+  input[type='number'],
+  input[type='text'] {
+    -moz-appearance: textfield;
+    width: 100%;
+    height: 100%;
+    border: none;
+    background-color: transparent;
+    line-height: $html-editor-numericline-height;
+    text-align: inherit;
+    padding: $html-editor-numericinput-padding;
+    outline: none;
+
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+
+  &.html-editor-state-disabled {
+    @extend %input-disabled;
+
+    .html-editor-spinner-button {
+      background-color: $html-editor-numericbutton-disabled-background-color;
+      color: $html-editor-numericbutton-disabled-color;
+
+      &:active,
+      &:hover {
+        background-color: $html-editor-numericbutton-disabled-background-color;
+        color: $html-editor-numericbutton-disabled-color;
+        background-image: none;
+        box-shadow: none;
+        cursor: initial;
+      }
+    }
+  }
+}
+
+.html-editor-spinner-button {
+  position: absolute;
+  right: $html-editor-numericbutton-offset;
+  padding: 0;
+
+  width: $html-editor-numericbutton-width;
+  height: $html-editor-numericbutton-height;
+  border-radius: $html-editor-numericbutton-border-radius;
+  background-color: $html-editor-numericbutton-background-color;
+  color: $html-editor-numericbutton-color;
+
+  &:hover {
+    background-color: $html-editor-numericbutton-background-color;
+  }
+
+  .hei {
+    font-size: $html-editor-numericbutton-height;
+    vertical-align: top;
+  }
+
+  .hei-caret-up {
+    &:before {
+      content: 'expand_less';
+    }
+  }
+
+  .hei-caret-down {
+    &:before {
+      content: 'expand_more';
+    }
+  }
+}
+
+.html-editor-spinner-up {
+  top: $html-editor-numericbutton-offset;
+}
+
+.html-editor-spinner-down {
+  bottom: $html-editor-numericbutton-offset;
+}

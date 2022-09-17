@@ -1,0 +1,255 @@
+$html-editor-colorpicker-panel-border: $html-editor-dropdown-panel-border !default;
+$html-editor-colorpicker-panel-background-color: $html-editor-dropdown-open-background-color !default;
+$html-editor-colorpicker-panel-shadow: 0 6px 14px 0 rgba(0, 0, 0, 0.06) !default;
+$html-editor-colorpicker-panel-padding: 0.625rem !default;
+$html-editor-colorpicker-panel-max-width: 280px !default;
+$html-editor-colorpicker-saturation-height: 150px !default;
+
+$html-editor-colorpicker-value-border-radius: $html-editor-input-border-radius !default;
+
+$html-editor-colorpicker-item-size: 16px !default;
+$html-editor-colorpicker-item-border-radius: $html-editor-input-border-radius !default;
+$html-editor-colorpicker-item-margin: 4px !default;
+$html-editor-colorpicker-item-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.25) 0px 0px 4px inset !default;
+
+$html-editor-colorpicker-handle-size: 12px !default;
+$html-editor-colorpicker-handle-border: 1px solid #fff !default;
+$html-editor-colorpicker-handle-shadow: rgb(255, 255, 255) 0px 0px 0px 1px, rgba(0, 0, 0, 0.3) 0px 0px 1px 1px inset, rgba(0, 0, 0, 0.4) 0px 0px 1px 2px !default;
+
+$html-editor-colorpicker-hex-input-padding: 0 3px !default;
+$html-editor-colorpicker-hex-input-height: 30px !default;
+$html-editor-colorpicker-rgba-input-padding: 1px 3px !default;
+$html-editor-colorpicker-rgba-input-height: 30px !default;
+$html-editor-colorpicker-input-labels-color: $html-editor-input-disabled-color !default;
+
+
+.html-editor-colorpicker {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+
+  @extend %input;
+
+  &.html-editor-disabled {
+    color: $html-editor-input-disabled-color;
+    cursor: default;
+  }
+}
+
+button.html-editor-colorpicker-trigger {
+  border: none;
+  appearance: none;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  color: $html-editor-button-color;
+  background-color: inherit;
+  outline: none;
+
+  .hei {
+    &:before {
+      content: 'arrow_drop_down';
+    }
+  }
+}
+
+.html-editor-colorpicker-popup {
+  display: none;
+  position: absolute;
+  border: $html-editor-colorpicker-panel-border;
+  background-color: $html-editor-colorpicker-panel-background-color;
+  box-shadow: $html-editor-colorpicker-panel-shadow;
+  min-width: 200px;
+  max-width: $html-editor-colorpicker-panel-max-width;
+  padding: $html-editor-colorpicker-panel-padding;
+  border-radius: $border-radius;
+}
+
+.html-editor-colorpicker-value {
+  flex: 1;
+  border-radius: $html-editor-colorpicker-value-border-radius;
+  border: $html-editor-input-border;
+  min-width: 20px;
+  min-height: 20px;
+}
+.html-editor-saturation-picker {
+  height: $html-editor-colorpicker-saturation-height;
+  position: relative;
+  touch-action: none;
+  border-radius: $html-editor-input-border-radius;
+}
+
+.html-editor-saturation-white {
+  background: linear-gradient(to right, #fff, rgba(255, 255, 255, 0));
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.06);
+}
+
+.html-editor-saturation-black,
+.html-editor-saturation-white {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: $html-editor-input-border-radius;
+  border-top-left-radius: $html-editor-input-border-radius - 1px;
+}
+
+.html-editor-saturation-black {
+  background: linear-gradient(to top, #000, rgba(0, 0, 0, 0));
+}
+
+.html-editor-saturation-handle {
+  position: absolute;
+  width: $html-editor-colorpicker-handle-size;
+  height: $html-editor-colorpicker-handle-size;
+  border: $html-editor-colorpicker-handle-border;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: $html-editor-colorpicker-handle-shadow;
+}
+
+.html-editor-hue-picker {
+  margin-bottom: 8px;
+  touch-action: none;
+  position: relative;
+  background-image: linear-gradient(
+    to right,
+    rgb(255, 0, 0) 0%,
+    rgb(255, 255, 0) 17%,
+    rgb(0, 255, 0) 33%,
+    rgb(0, 255, 255) 50%,
+    rgb(0, 0, 255) 67%,
+    rgb(255, 0, 255) 83%,
+    rgb(255, 0, 0) 100%
+  );
+  border-radius: $html-editor-input-border-radius;
+  height: $html-editor-colorpicker-handle-size;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.06);
+}
+
+.html-editor-alpha-picker {
+  touch-action: none;
+  position: relative;
+  border-radius: $html-editor-input-border-radius;
+  height: $html-editor-colorpicker-handle-size;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.06);
+}
+
+.html-editor-hue-handle,
+.html-editor-alpha-handle {
+  position: absolute;
+  height: 100%;
+  width: 8px;
+  border: $html-editor-colorpicker-handle-border;
+  border-radius: $html-editor-input-border-radius/2;
+  transform: translateX(-50%);
+  box-shadow: $html-editor-colorpicker-handle-shadow;
+}
+
+.html-editor-colorpicker-preview-area {
+  display: flex;
+}
+
+.html-editor-hue-and-alpha {
+  flex: 1;
+  padding-right: 8px;
+}
+
+.html-editor-alpha-picker,
+.html-editor-colorpicker-preview {
+  &:before {
+    position: absolute;
+    z-index: -1;
+    content: '';
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    border-radius: $html-editor-input-border-radius;
+    background-image: linear-gradient(45deg, #cccccc 25%, transparent 25%),
+      linear-gradient(-45deg, #cccccc 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, #cccccc 75%),
+      linear-gradient(-45deg, transparent 75%, #cccccc 75%);
+    background-size: 8px 8px;
+    background-position: 0 0, 0 4px, 4px -4px, -4px 0px;
+  }
+}
+
+.html-editor-colorpicker-preview {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset,
+    rgba(0, 0, 0, 0.25) 0px 0px 4px inset;
+  border-radius: $html-editor-input-border-radius;
+}
+
+.html-editor-colorpicker-rgba {
+  display: flex;
+}
+
+.html-editor-color-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  color: $html-editor-colorpicker-input-labels-color;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+
+  &:not(:last-child) {
+    margin-right: 4px;
+  }
+
+  .html-editor-textbox {
+    width: 80px;
+    margin-right: 4px;
+    padding: $html-editor-colorpicker-hex-input-padding;
+    height: $html-editor-colorpicker-hex-input-height;
+  }
+
+  .html-editor-spinner {
+    padding: $html-editor-colorpicker-rgba-input-padding;
+    height: $html-editor-colorpicker-rgba-input-height;
+
+    .html-editor-spinner-input {
+      padding: 0;
+      outline: none;
+    }
+
+    button {
+      display: none;
+    }
+    button:hover {
+      display: initial;
+    }
+  }
+}
+
+.html-editor-colorpicker-button {
+  justify-content: flex-end;
+  display: flex;
+}
+
+.html-editor-colorpicker-section {
+  &:not(:last-child) {
+    margin-bottom: 8px;
+  }
+}
+
+.html-editor-colorpicker-colors {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -4px;
+  margin-right: -4px;
+}
+
+.html-editor-colorpicker-item {
+  width: $html-editor-colorpicker-item-size;
+  height: $html-editor-colorpicker-item-size;
+  border-radius: $html-editor-colorpicker-item-border-radius;
+  margin: $html-editor-colorpicker-item-margin;
+  box-shadow: $html-editor-colorpicker-item-shadow;
+  cursor: pointer;
+}

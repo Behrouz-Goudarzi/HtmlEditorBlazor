@@ -1,0 +1,99 @@
+$html-editor-upload-button-bar-background-color: rgba(#e6ecef, 0.5) !default;
+$html-editor-upload-button-bar-padding: 0.75rem !default;
+
+$html-editor-upload-files-background-color: $white !default;
+$html-editor-upload-files-padding: 1rem 0 !default;
+$html-editor-upload-files-remove-background-color: #dadfe2 !default;
+$html-editor-upload-files-remove-color: $white !default;
+
+$html-editor-upload-files-margin: 0 0.75rem !default;
+
+$html-editor-upload-choose-background-color: $secondary !default;
+$html-editor-upload-choose-color: $white !default;
+$html-editor-upload-cancel-background-color: #dadfe2 !default;
+$html-editor-upload-cancel-color: $charcoal-grey !default;
+$html-editor-upload-button-background-color: $primary !default;
+
+.html-editor-fileupload {
+  display: inline-block;
+
+  .html-editor-button {
+    @extend .html-editor-button-sm;
+    vertical-align: middle;
+
+    -webkit-appearance: none !important;
+
+    &[disabled] {
+      opacity: 0.5;
+    }
+  }
+}
+
+.html-editor-fileupload-choose {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: middle;
+  @extend .html-editor-button-md;
+  background-color: $html-editor-upload-choose-background-color;
+  color: $html-editor-upload-choose-color;
+
+  input[type='file'] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    opacity: 0;
+    min-height: 100%;
+    cursor: pointer;
+  }
+}
+
+.html-editor-fileupload-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  > div {
+    margin: $html-editor-upload-files-margin;
+  }
+
+  .html-editor-button-text {
+    display: none;
+  }
+
+  .html-editor-button {
+
+    .hei-close,
+    .hei-times,
+    .html-editor-icon-trash {
+      @extend .hei;
+      display: block;
+
+      &:before {
+        content: 'close';
+      }
+    }
+  }
+}
+
+.html-editor-fileupload-buttonbar {
+  position: relative;
+  background-color: $html-editor-upload-button-bar-background-color;
+  padding: $html-editor-upload-button-bar-padding;
+  border-radius: $html-editor-input-border-radius;
+
+  .html-editor-button {
+    &:nth-child(3) {
+      float: right;
+
+      background-color: $html-editor-upload-cancel-background-color;
+      color: $html-editor-upload-cancel-color;
+    }
+  }
+}
+
+.html-editor-fileupload-files {
+  background-color: $html-editor-upload-files-background-color;
+  padding: $html-editor-upload-files-padding;
+}

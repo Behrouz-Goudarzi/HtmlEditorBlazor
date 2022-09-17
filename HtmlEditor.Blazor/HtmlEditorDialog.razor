@@ -1,0 +1,62 @@
+﻿@implements IDisposable
+@using Microsoft.JSInterop
+@using HtmlEditor.Blazor.Rendering
+@inject IJSRuntime JSRuntime
+
+@foreach (var dialog in dialogs)
+{
+    <DialogContainer Dialog=@dialog ShowMask=@(dialog==dialogs.LastOrDefault()) />
+}
+
+@code {
+    [Inject] 
+    HtmlEditorDialogService Service { get; set; }
+
+    List<Dialog> dialogs = new List<Dialog>();
+
+    public async Task Open(string title, Type type, Dictionary<string, object> parameters, DialogOptions options)
+    {
+        dialogs.Add(new Dialog() { Title = title, Type = type, Parameters = parameters, Options = options });
+
+        await InvokeAsync(() => { StateHasChanged(); });
+
+        await JSRuntime.InvokeAsync<string>("HtmlEditor.openDialog", options, Service.Reference);
+    }
+
+    public async Task Close(dynamic result)
+    {
+        var lastDialog = dialogs.LastOrDefault();
+        if (lastDialog != null)
+        {
+            dialogs.Remove(lastDialog);
+            if (dialogs.Count==0) await JSRuntime.InvokeAsync<string>("HtmlEditor.closeDialog");
+        }
+
+        await InvokeAsync(() => 
+        { 
+            StateHasChanged(); 
+        });
+    }
+
+    public void Dispose()
+    {
+        Service.OnOpen -= OnOpen;
+        Service.OnClose -= OnClose;
+    }
+
+    protected override void OnInitialized()
+    {
+        Service.OnOpen += OnOpen;
+        Service.OnClose += OnClose;
+    }
+
+    void OnOpen(string title, Type type, Dictionary<string, object> parameters, DialogOptions options)
+    {
+        Open(title, type, parameters, options).ConfigureAwait(false);
+    }
+
+    void OnClose(dynamic result)
+    {
+        Close(result).ConfigureAwait(false);
+    }
+}

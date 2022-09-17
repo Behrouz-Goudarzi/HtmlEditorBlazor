@@ -1,0 +1,54 @@
+@using HtmlEditor
+@using HtmlEditor.Blazor
+@using HtmlEditor.Blazor.Rendering
+@using Microsoft.JSInterop
+@inherits FormComponent<string>
+
+@if(Visible)
+{
+    <div @ref=Element style=@Style @attributes=@Attributes class=@GetCssClass() id=@GetId()>
+        <div class="html-editor-toolbar">
+            <CascadingValue Value=@this>
+            @if (ChildContent != null)
+            {
+                @ChildContent
+            }
+            else
+            {
+                <HtmlEditorUndo />
+                <HtmlEditorRedo />
+                <HtmlEditorSeparator />
+                <HtmlEditorBold />
+                <HtmlEditorItalic />
+                <HtmlEditorUnderline />
+                <HtmlEditorStrikeThrough />
+                <HtmlEditorSeparator />
+                <HtmlEditorAlignLeft />
+                <HtmlEditorAlignCenter />
+                <HtmlEditorAlignRight />
+                <HtmlEditorJustify />
+                <HtmlEditorSeparator />
+                <HtmlEditorIndent />
+                <HtmlEditorOutdent />
+                <HtmlEditorUnorderedList />
+                <HtmlEditorOrderedList />
+                <HtmlEditorSeparator />
+                <HtmlEditorColor />
+                <HtmlEditorBackground />
+                <HtmlEditorRemoveFormat />
+                <HtmlEditorSeparator />
+                <HtmlEditorSubscript />
+                <HtmlEditorSuperscript />
+                <HtmlEditorSeparator />
+                <HtmlEditorLink />
+                <HtmlEditorUnlink />
+                <HtmlEditorImage />
+                <HtmlEditorFontName />
+                <HtmlEditorFontSize />
+                <HtmlEditorFormatBlock />
+            }
+            </CascadingValue>
+        </div>
+        <div @ref=@ContentEditable class="html-editor-content" contenteditable=@(!Disabled) @onfocus=@OnFocus @onblur=@OnBlur></div>
+    </div>
+}

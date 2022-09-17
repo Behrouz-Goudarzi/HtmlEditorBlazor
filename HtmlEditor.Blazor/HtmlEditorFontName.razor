@@ -1,0 +1,22 @@
+@using HtmlEditor.Blazor.Rendering
+
+<EditorDropDown Title=@Title Value=@Editor.State.FontName Change=@OnChange Placeholder="@Placeholder"
+    PopupStyle="width: 200px; max-height: 200px; overflow: auto;">
+    <CascadingValue Value=@this>
+        @if (ChildContent != null)
+        {
+            @ChildContent
+        }
+        else
+        {
+            <HtmlEditorFontNameItem Text="Arial" Value="Arial" />
+            <HtmlEditorFontNameItem Text="Georgia" Value="Georgia" />
+            <HtmlEditorFontNameItem Text="Helvetica" Value="Helvetica" />
+            <HtmlEditorFontNameItem Text="Monospace" Value="monospace" />
+            <HtmlEditorFontNameItem Text="Segoe UI" Value='"Segoe UI"' />
+            <HtmlEditorFontNameItem Text="Tahoma" Value="Tahoma" />
+            <HtmlEditorFontNameItem Text="Times New Roman" Value='"Times New Roman"' />
+            <HtmlEditorFontNameItem Text="Verdana" Value="Verdana" />
+        }
+    </CascadingValue>
+</EditorDropDown>

@@ -1,0 +1,19 @@
+@code {
+    [Parameter]
+    public string Name { get; set; }
+
+    [Parameter]
+    public string Value { get; set; }
+
+    [CascadingParameter]
+    public HtmlEditorUpload Upload { get; set; }
+
+    public override async Task SetParametersAsync(ParameterView parameters)
+    {
+        Upload?.RemoveHeader(Name);
+
+        await base.SetParametersAsync(parameters);
+
+        Upload?.AddHeader(Name, Value);
+    }
+}

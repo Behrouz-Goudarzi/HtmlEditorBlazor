@@ -1,0 +1,13 @@
+@using HtmlEditor.Blazor.Rendering
+
+@if (Visible)
+{
+    @if (Template == null)
+    {
+        <EditorButton Title=@Title Click=@OnClick Icon=@Icon Selected=@Selected Disabled=@Disabled />
+    }
+    else
+    {
+        <div class="html-editor-custom-tool">@Template(Editor)</div>
+    }
+}

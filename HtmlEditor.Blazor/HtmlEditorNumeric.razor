@@ -1,0 +1,27 @@
+﻿@using HtmlEditor
+@using Microsoft.JSInterop
+@using Microsoft.AspNetCore.Components.Forms
+@typeparam TValue
+@inherits FormComponent<TValue>
+
+@if (Visible)
+{
+    <span @ref="@Element" style="@Style" @attributes="Attributes" class="@GetCssClass()" id="@GetId()">
+        <input @ref="@input" type="text" inputmode="decimal" name="@Name" disabled="@Disabled" readonly="@ReadOnly"
+               class="html-editor-spinner-input html-editor-inputtext" tabindex="@TabIndex"
+               placeholder="@Placeholder" autocomplete="@(AutoComplete ? "on" : "off")" value="@FormattedValue" @onchange="@OnChange"
+               onkeypress="HtmlEditor.numericKeyPress(event, @IsInteger().ToString().ToLower())"
+           onblur="@getOnInput()" onpaste="@getOnPaste()" />
+        @if (ShowUpDown)
+        {
+            <button type="button" class="html-editor-spinner-button html-editor-spinner-up html-editor-button" tabindex="-1"
+                    @onclick="@((args) => UpdateValueWithStep(true))">
+                <span class="html-editor-spinner-button-icon hei hei-caret-up"></span>
+            </button>
+            <button type="button" class="html-editor-spinner-button html-editor-spinner-down html-editor-button" tabindex="-1"
+                    @onclick="@((args) => UpdateValueWithStep(false))">
+                <span class="html-editor-spinner-button-icon hei hei-caret-down"></span>
+            </button>
+        }
+    </span>
+}

@@ -1,0 +1,74 @@
+@inherits HtmlEditorComponentBase
+@using Microsoft.JSInterop
+
+<div @ref=@Element @ontouchstart=@OnTouchStart @onmouseup=@OnMouseUp @onmousedown=@OnMouseDown @attributes=@Attributes style=@Style id=@GetId()>
+    @ChildContent
+</div>
+@code {
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    [Parameter]
+    public EventCallback<DraggableEventArgs> DragStart { get; set; }
+
+    [Parameter]
+    public EventCallback<DraggableEventArgs> DragEnd { get; set; }
+
+    [Parameter]
+    public EventCallback<DraggableEventArgs> Drag { get; set; }
+
+    Rect Rect { get; set; }
+
+    bool Touch { get; set; }
+
+    async Task OnMouseUp(MouseEventArgs args)
+    {
+        await JSRuntime.InvokeVoidAsync("HtmlEditor.endDrag", Element);
+
+        await DragEnd.InvokeAsync(new DraggableEventArgs
+        {
+            ClientX = args.ClientX,
+            ClientY = args.ClientY,
+            Rect = Rect
+        });
+    }
+
+    async Task OnMouseDown(MouseEventArgs args)
+    {
+        if (!Touch)
+        {
+            Rect = await JSRuntime.InvokeAsync<Rect>("HtmlEditor.startDrag", Element, Reference, nameof(OnMove));
+
+            await DragStart.InvokeAsync(new DraggableEventArgs 
+            {
+                ClientX = args.ClientX,
+                ClientY = args.ClientY,
+                Rect = Rect
+            });
+
+            await OnMove(args);
+        }
+
+        Touch = false;
+    }
+
+    [JSInvokable]
+    public async Task OnMove(MouseEventArgs args)
+    {
+        await Drag.InvokeAsync(new DraggableEventArgs 
+        {
+            ClientX = args.ClientX,
+            ClientY = args.ClientY,
+            Rect = Rect
+        });
+    }
+
+    async Task OnTouchStart(TouchEventArgs args)
+    {
+        if (args.TargetTouches.Any())
+        {
+            await OnMouseDown(new MouseEventArgs { ClientX = args.TargetTouches[0].ClientX, ClientY = args.TargetTouches[0].ClientY});
+            Touch = true;
+        }
+    }
+}
